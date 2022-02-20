@@ -1,0 +1,24 @@
+{
+  "name": "gql-movie",
+  "version": "1.0.0",
+  "description": "movie api server w/ GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilovePUBG/gql-movie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilovePUBG/gql-movie/issues"
+  },
+  "homepage": "https://github.com/ilovePUBG/gql-movie#readme",
+  "dependencies": {
+    "@graphql-yoga/node": "^0.0.1-beta.1",
+    "graphql": "^16.3.0"
+  }
+}
