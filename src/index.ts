@@ -1,3 +1,3 @@
-console.log('hello world oh my god is~~!!!!!')
+console.log('i just had sex~ and it feels so good~!')
 
 export {}
