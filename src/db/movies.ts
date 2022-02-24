@@ -25,12 +25,8 @@ export const getMovies = () => movies
 export const getMovieById = (id: number) => movies.filter((m) => m.id === id)
 export const deleteMovie = (id: number) => {
   const targetIdx = movies.findIndex((m) => m.id === id)
-  if (targetIdx < 0) {
-    return false
-  } else {
-    movies.splice(targetIdx, 1)
-    return true
-  }
+  movies.splice(targetIdx, 1)
+  return movies
 }
 export const addMovie = (name: string, score: number) => {
   const newMovie = {

@@ -24,6 +24,7 @@ const typeDefs = `
 
   type Mutation {
     addMovie(name: String!, score: Int!): Movie
+    deleteMovie(id: Int!): [Movie]
   }
 `
 const resolvers = {
@@ -35,6 +36,7 @@ const resolvers = {
   },
   Mutation: {
     addMovie: (_: any, { name, score }: any) => addMovie(name, score),
+    deleteMovie: (_: any, { id }: any) => deleteMovie(id),
   },
 }
 
