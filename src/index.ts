@@ -1,7 +1,7 @@
 import { createServer } from '@graphql-yoga/node'
 import { people, getPersonById } from './db/people'
-import { getMovies, getMovieById, deleteMovie, addMovie } from './db/movies'
-import { getRestMoives } from './db/rest'
+import { addMovie, deleteMovie } from './db/movies'
+import { getMovies, getMovieDetail, getMovieSuggestions } from './db/rest'
 
 const typeDefs = `
   type Person {
@@ -13,12 +13,6 @@ const typeDefs = `
 
   type Movie {
     id: Int!
-    name: String!
-    score: Int!
-  }
-
-  type RestMovie {
-    id: Int!
     title: String!
     rating: Float!
     summary: String!
@@ -29,9 +23,9 @@ const typeDefs = `
   type Query {
     person(id: Int!): Person
     people: [Person]!
-    movies: [Movie]
-    movie(id: Int!): Movie
-    restmovies(limit: Int, rating: Float): [RestMovie]
+    movies(limit: Int, rating: Float): [Movie]
+    movie_detail(id: Int!): Movie
+    movie_suggestions(id: Int!): [Movie]
   }
 
   type Mutation {
@@ -44,9 +38,8 @@ const resolvers = {
     person: (_: any, { id }: any) => getPersonById(id),
     people: () => people,
     movies: () => getMovies(),
-    movie: (_: any, { id }: any) => getMovieById(id),
-    restmovies: (_: any, { limit, rating }: any) =>
-      getRestMoives(limit, rating),
+    movie_detail: (_: any, { id }: any) => getMovieDetail(id),
+    movie_suggestions: (_: any, { id }: any) => getMovieSuggestions(id),
   },
   Mutation: {
     addMovie: (_: any, { name, score }: any) => addMovie(name, score),
