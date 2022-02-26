@@ -3,6 +3,11 @@ import { people, getPersonById } from './db/people'
 import { addMovie, deleteMovie } from './db/movies'
 import { getMovies, getMovieDetail, getMovieSuggestions } from './db/rest'
 
+// typeDefs에서 정의하는 것
+// 클라이언트에서 전송할 query, mutation의 이름 + 구조 + required 여부
+// 서버에서 전송할 query의 응답 data type
+// query는 db로부터 data를 get할 때 사용하고...
+// mutation은 db에 data를 추가/수정/삭제할 때 사용한다
 const typeDefs = `
   type Person {
     id: Int!
@@ -33,6 +38,8 @@ const typeDefs = `
     deleteMovie(id: Int!): [Movie]
   }
 `
+// resolver
+// 서버 입장에서 클라이언트 query 또는 mutation이 들어왔을 때 처리로직 및 응답으로 전달할 데이터를 정의한다.
 const resolvers = {
   Query: {
     person: (_: any, { id }: any) => getPersonById(id),
@@ -48,6 +55,7 @@ const resolvers = {
 }
 
 // Create your server
+// schema에서는 graphql client, server에서 사용할 query, mutation, resolvers들을 정의한다.
 const server = createServer({
   schema: {
     typeDefs,
