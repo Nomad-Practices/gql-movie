@@ -17,7 +17,7 @@ const getMovies = async (limit?: number, minimum_rating?: number) => {
     const { data: response } = await axios(reqConfig)
     return response.data.movies
   } catch (e) {
-    console.error(e)
+    Promise.reject(e)
   }
 }
 
@@ -32,7 +32,7 @@ const getMovieDetail = async (id: number) => {
     const { data: response } = await axios(reqConfig)
     return response.data.movie
   } catch (e) {
-    console.error(e)
+    Promise.reject(e)
   }
 }
 
@@ -47,7 +47,7 @@ const getMovieSuggestions = async (id: number) => {
     const { data: response } = await axios(reqConfig)
     return response.data.movies
   } catch (e) {
-    console.error(e)
+    Promise.reject(e)
   }
 }
 
